@@ -1,0 +1,34 @@
+============================================================
+  HOW TO ADD YOUR 2 PHOTOS TO "THE PIC I LOVED MOSTLY"
+============================================================
+
+STEP 1 — Find this folder:
+   Open File Explorer and go to:
+   C:\Users\PURNA - REVANTH\OneDrive\Documents\Kumar\assets\
+
+STEP 2 — Rename your first photo:
+   Take your first favourite picture of her.
+   Rename the image file to exactly:
+       photo1.jpg
+   (it can also be .png — if so, see Step 4)
+
+STEP 3 — Rename your second photo:
+   Take your second favourite picture of her.
+   Rename the image file to exactly:
+       photo2.jpg
+
+STEP 4 — Copy both files into the assets folder:
+   Paste both photo1.jpg and photo2.jpg into:
+   C:\Users\PURNA - REVANTH\OneDrive\Documents\Kumar\assets\
+
+STEP 5 — Open the website:
+   Double-click on index.html (in the Kumar folder)
+   Click the gift box → go to "Pics I Love" tab
+   Your two photos will appear in glowing frames!
+
+------------------------------------------------------------
+NOTE: If your photos are .png instead of .jpg, that is fine.
+Just make sure the name matches what you put in index.html:
+   src="assets/photo1.jpg"  →  change jpg to png if needed.
+   (Or just save your images as .jpg — easiest option!)
+------------------------------------------------------------

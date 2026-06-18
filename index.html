@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🌟</title>
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Canvas for Stars & Confetti Particles -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Ambient Music Floating Controller -->
+    <div id="music-controller" class="hidden">
+        <button id="music-toggle-btn" aria-label="Toggle Music">
+            <svg class="music-icon play" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+            </svg>
+            <svg class="music-icon mute hidden" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.18l6.73 6.73L21 20.73 4.27 3zM14 7h4V3h-6v5.18l2 2V7z"/>
+            </svg>
+        </button>
+        <span id="music-status">Play Song 🎵</span>
+    </div>
+
+    <!-- ==================== STAGE 1: INTRO & GIFT UNWRAPPING ==================== -->
+    <section id="intro-stage">
+        <div class="intro-container">
+            <h1 class="glow-text title-font fade-in">For Someone Special</h1>
+            <p class="subtitle fade-in">A little virtual box carrying warm wishes and magic... Click to open it.</p>
+            
+            <!-- 3D Gift Box Container -->
+            <div class="gift-box-wrapper fade-in">
+                <div class="gift-box" id="birthday-gift">
+                    <div class="gift-lid">
+                        <div class="lid-ribbon"></div>
+                        <div class="lid-bow">
+                            <div class="bow-loop-left"></div>
+                            <div class="bow-loop-right"></div>
+                        </div>
+                    </div>
+                    <div class="gift-body">
+                        <div class="body-ribbon"></div>
+                        <div class="gift-sparkles"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hint-message">Tap the box to open ✨</div>
+        </div>
+    </section>
+
+    <!-- ==================== STAGE 2: MAIN CELEBRATION DASHBOARD ==================== -->
+    <main id="main-stage" class="hidden">
+        <!-- Sidebar Navigation (Glassmorphic) -->
+        <nav class="sidebar-nav">
+            <div class="nav-brand">
+                <span class="sparkle-spark">✦</span>
+                <span id="nav-birthday-girl">Happy Birthday</span>
+                <span class="sparkle-spark">✦</span>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item active" data-tab="welcome">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nav-icon">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <span>Letter</span>
+                </li>
+                <li class="nav-item" data-tab="memories">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nav-icon">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span>Pics I Love</span>
+                </li>
+                <li class="nav-item" data-tab="wish">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nav-icon">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    <span>Wishes</span>
+                </li>
+                <li class="nav-item" data-tab="candles">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nav-icon">
+                        <path d="M12 2v10M18 8v4M6 8v4M4 12h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8z"></path>
+                    </svg>
+                    <span>Cake</span>
+                </li>
+                <li class="nav-item" data-tab="notes">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nav-icon">
+                        <path d="M12 20h9"></path>
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                    </svg>
+                    <span>Book</span>
+                </li>
+            </ul>
+            <div class="nav-footer">
+                Made for You With 💙
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <section class="content-viewport">
+            
+            <!-- 1. Welcome Letter Tab -->
+            <div class="tab-panel active" id="welcome-panel">
+                <div class="glass-card welcome-card">
+                    <div class="letter-envelope" id="envelope">
+                        <div class="envelope-flap"></div>
+                        <div class="envelope-paper">
+                            <div class="letter-signature">For You...</div>
+                        </div>
+                        <div class="envelope-front"></div>
+                        <div class="envelope-tap-prompt">Click to Open Letter 💌</div>
+                    </div>
+                    
+                    <div class="letter-opened-content hidden" id="opened-letter">
+                        <h2 class="sacramento-font letter-title">Dearest <span class="recipient-name">Name</span>,</h2>
+                        <div class="letter-body">
+                            <p id="typewriter-text"></p>
+                        </div>
+                        <div class="letter-signoff">
+                            <p>With love,</p>
+                            <p class="sacramento-font signature-name" id="sender-signature">Your Friend</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Pics I Love Tab -->
+            <div class="tab-panel" id="memories-panel">
+                <div class="tab-header">
+                    <h2 class="title-font gradient-text">The Pic I Loved Mostly 💙</h2>
+                    <p>Two frames that hold something truly irreplaceable.</p>
+                </div>
+                
+                <div class="pic-love-gallery">
+                    <!-- Photo 1 -->
+                    <div class="pic-love-frame" id="pic-frame-1">
+                        <div class="pic-love-img-wrap">
+                            <img id="pic-love-img-1" src="assets/photo1.jpg" alt="Special Photo 1"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="pic-placeholder" style="display:none;">
+                                <span>📸</span>
+                                <p>Add photo1.jpg<br>to your assets folder</p>
+                            </div>
+                        </div>
+                        <div class="pic-love-label">Moment One ✨</div>
+                    </div>
+
+                    <!-- Photo 2 -->
+                    <div class="pic-love-frame" id="pic-frame-2">
+                        <div class="pic-love-img-wrap">
+                            <img id="pic-love-img-2" src="assets/photo2.jpg" alt="Special Photo 2"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="pic-placeholder" style="display:none;">
+                                <span>📸</span>
+                                <p>Add photo2.jpg<br>to your assets folder</p>
+                            </div>
+                        </div>
+                        <div class="pic-love-label">Moment Two 💫</div>
+                    </div>
+                </div>
+
+                <!-- Caption below both photos -->
+                <div class="pic-love-caption">
+                    <span class="caption-quote-mark">&ldquo;</span>
+                    In my eyes you are still a little girl
+                    <span class="caption-quote-mark">&rdquo;</span>
+                </div>
+            </div>
+
+            <!-- 3. Wishing Well Tab -->
+            <div class="tab-panel" id="wish-panel">
+                <div class="tab-header">
+                    <h2 class="title-font gradient-text">Wish Jar</h2>
+                    <p>Click on the floating magical bubbles to release happy wishes and blessings just for you!</p>
+                </div>
+                
+                <div class="wish-jar-container">
+                    <div class="jar-wrapper">
+                        <!-- The Jar graphic -->
+                        <div class="wish-jar">
+                            <div class="jar-lid"></div>
+                            <div class="jar-neck"></div>
+                            <div class="jar-body">
+                                <div class="jar-glow"></div>
+                                <div class="jar-bubbles-area" id="bubbles-container">
+                                    <!-- Interactive bubbles float here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Display board for popped wishes -->
+                    <div class="wish-display-card glass-card">
+                        <div class="wish-display-content" id="wish-message-box">
+                            <div class="wish-placeholder-text">Click a glowing bubble inside the jar to reveal a birthday wish... ✨</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Blow Candles Tab -->
+            <div class="tab-panel" id="candles-panel">
+                <div class="tab-header">
+                    <h2 class="title-font gradient-text">Make a Wish & Blow</h2>
+                    <p>Blow out the candles on your virtual birthday cake! Click the button or tap individual candles to blow them out.</p>
+                </div>
+
+                <div class="cake-container">
+                    <div class="cake">
+                        <!-- Plate -->
+                        <div class="plate"></div>
+                        
+                        <!-- Cake Layers -->
+                        <div class="layer layer-bottom"></div>
+                        <div class="layer layer-middle"></div>
+                        <div class="layer layer-top"></div>
+                        
+                        <!-- Frosting & Drips -->
+                        <div class="icing"></div>
+                        
+                        <!-- Candles Container -->
+                        <div class="candles-wrapper" id="candles-group">
+                            <div class="candle" data-id="1" style="left: 25%;">
+                                <div class="flame"></div>
+                            </div>
+                            <div class="candle" data-id="2" style="left: 40%; top: -10px;">
+                                <div class="flame"></div>
+                            </div>
+                            <div class="candle" data-id="3" style="left: 55%; top: -15px;">
+                                <div class="flame"></div>
+                            </div>
+                            <div class="candle" data-id="4" style="left: 70%;">
+                                <div class="flame"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cake-controls">
+                    <button class="action-btn glow-button" id="blow-all-btn">Blow Out Candles 💨</button>
+                    <button class="action-btn secondary-btn hidden" id="relight-btn">Relight Candles 🕯️</button>
+                </div>
+
+                <!-- Hidden surprise card when candles are blown -->
+                <div class="surprise-overlay hidden" id="cake-surprise">
+                    <div class="glass-card surprise-card fade-in">
+                        <span class="surprise-sparkle">🎉</span>
+                        <h3 class="title-font">May All Your Wishes Come True!</h3>
+                        <p>Wishing you 365 days of laughter, love, health, and infinite happiness. Keep glowing and shining, you deserve the world!</p>
+                        <button class="action-btn" id="close-surprise-btn">Back to Cake</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Special Notes Tab -->
+            <div class="tab-panel" id="notes-panel">
+                <div class="tab-header">
+                    <h2 class="title-font gradient-text">Your Birthday Book</h2>
+                    <p>Open this magical book in the center to read special notes, quotes, or sweet poems written just for you.</p>
+                </div>
+
+                <div class="single-book-container">
+                    <div class="interactive-book" id="central-book">
+                        <!-- Cover Face (Front) -->
+                        <div class="book-face book-face-cover">
+                            <span class="book-cover-tag">Volume I</span>
+                            <div class="book-cover-crest">📘</div>
+                            <h3 class="book-cover-title">Notes of Love</h3>
+                            <span class="book-cover-subtitle">Tap Cover to Open 📖</span>
+                        </div>
+                        <!-- Page Face (Back) -->
+                        <div class="book-face book-face-page">
+                            <div class="book-page-header">
+                                <span id="page-tag" class="page-tag">A Reminder</span>
+                                <span id="page-number" class="page-number">Page 1 of 4</span>
+                            </div>
+                            <h4 id="page-title" class="page-title">A Little Reminder</h4>
+                            <div id="page-content" class="page-content">
+                                <!-- Dynamic content injected by app.js -->
+                            </div>
+                            <div class="book-page-footer">
+                                With love 💙
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Controls below book -->
+                    <div class="book-controls" id="book-controls-panel">
+                        <button class="action-btn secondary-btn hidden" id="book-prev-btn">⬅️ Prev</button>
+                        <button class="action-btn glow-button" id="book-action-btn">Open Book 📖</button>
+                        <button class="action-btn secondary-btn hidden" id="book-next-btn">Next ➡️</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Include code logic files -->
+    <script src="assets/placeholder.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
