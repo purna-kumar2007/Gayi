@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Sacramento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Background Canvas for Stars & Confetti Particles -->
     <canvas id="particle-canvas"></canvas>
@@ -32,7 +34,7 @@
         <div class="intro-container">
             <h1 class="glow-text title-font fade-in">For Someone Special</h1>
             <p class="subtitle fade-in">A little virtual box carrying warm wishes and magic... Click to open it.</p>
-            
+
             <!-- 3D Gift Box Container -->
             <div class="gift-box-wrapper fade-in">
                 <div class="gift-box" id="birthday-gift">
@@ -49,7 +51,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="hint-message">Tap the box to open ✨</div>
         </div>
     </section>
@@ -104,7 +106,7 @@
 
         <!-- Main Content Area -->
         <section class="content-viewport">
-            
+
             <!-- 1. Welcome Letter Tab -->
             <div class="tab-panel active" id="welcome-panel">
                 <div class="glass-card welcome-card">
@@ -116,7 +118,7 @@
                         <div class="envelope-front"></div>
                         <div class="envelope-tap-prompt">Click to Open Letter 💌</div>
                     </div>
-                    
+
                     <div class="letter-opened-content hidden" id="opened-letter">
                         <h2 class="sacramento-font letter-title">Dearest <span class="recipient-name">Name</span>,</h2>
                         <div class="letter-body">
@@ -136,13 +138,12 @@
                     <h2 class="title-font gradient-text">The Pic I Loved Mostly 💙</h2>
                     <p>Two frames that hold something truly irreplaceable.</p>
                 </div>
-                
+
                 <div class="pic-love-gallery">
                     <!-- Photo 1 -->
                     <div class="pic-love-frame" id="pic-frame-1">
                         <div class="pic-love-img-wrap">
-                            <img id="pic-love-img-1" src="assets/photo1.jpg" alt="Special Photo 1"
-                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <img id="pic-love-img-1" src="photo1.jpg" alt="Special Photo 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="pic-placeholder" style="display:none;">
                                 <span>📸</span>
                                 <p>Add photo1.jpg<br>to your assets folder</p>
@@ -154,8 +155,7 @@
                     <!-- Photo 2 -->
                     <div class="pic-love-frame" id="pic-frame-2">
                         <div class="pic-love-img-wrap">
-                            <img id="pic-love-img-2" src="assets/photo2.jpg" alt="Special Photo 2"
-                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <img id="pic-love-img-2" src="photo2.jpg" alt="Special Photo 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="pic-placeholder" style="display:none;">
                                 <span>📸</span>
                                 <p>Add photo2.jpg<br>to your assets folder</p>
@@ -167,8 +167,7 @@
 
                 <!-- Caption below both photos -->
                 <div class="pic-love-caption">
-                    <span class="caption-quote-mark">&ldquo;</span>
-                    In my eyes you are still a little girl
+                    <span class="caption-quote-mark">&ldquo;</span> In my eyes you are still a little girl
                     <span class="caption-quote-mark">&rdquo;</span>
                 </div>
             </div>
@@ -179,7 +178,7 @@
                     <h2 class="title-font gradient-text">Wish Jar</h2>
                     <p>Click on the floating magical bubbles to release happy wishes and blessings just for you!</p>
                 </div>
-                
+
                 <div class="wish-jar-container">
                     <div class="jar-wrapper">
                         <!-- The Jar graphic -->
@@ -194,7 +193,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Display board for popped wishes -->
                     <div class="wish-display-card glass-card">
                         <div class="wish-display-content" id="wish-message-box">
@@ -215,15 +214,15 @@
                     <div class="cake">
                         <!-- Plate -->
                         <div class="plate"></div>
-                        
+
                         <!-- Cake Layers -->
                         <div class="layer layer-bottom"></div>
                         <div class="layer layer-middle"></div>
                         <div class="layer layer-top"></div>
-                        
+
                         <!-- Frosting & Drips -->
                         <div class="icing"></div>
-                        
+
                         <!-- Candles Container -->
                         <div class="candles-wrapper" id="candles-group">
                             <div class="candle" data-id="1" style="left: 25%;">
@@ -289,7 +288,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Controls below book -->
                     <div class="book-controls" id="book-controls-panel">
                         <button class="action-btn secondary-btn hidden" id="book-prev-btn">⬅️ Prev</button>
@@ -306,4 +305,5 @@
     <script src="assets/placeholder.js"></script>
     <script src="app.js"></script>
 </body>
+
 </html>
